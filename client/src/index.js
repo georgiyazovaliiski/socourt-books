@@ -12,7 +12,7 @@ import {fetchBooks, getBooks} from "./actions";
 window.appStore = store;
 window.fetchBooks = fetchBooks;
 
-store.subscribe(() => console.log("Redux works!"))
+store.subscribe(()=>{});
 
 ReactDOM.render((<App />), document.getElementById('root'));
 registerServiceWorker();

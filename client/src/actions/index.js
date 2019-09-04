@@ -37,7 +37,8 @@ export const searchBooks = (name) => {
         return fetch(`http://localhost:5000/api/books/search`,
             {
                 method:"POST",
-                body: JSON.parse(name), // data can be `string` or {object}!
+                dataType: 'json',
+                body: JSON.stringify({name: name}), // data can be `string` or {object}!
                 headers:{
                     'Content-Type': 'application/json'
                 }
@@ -49,7 +50,6 @@ export const searchBooks = (name) => {
                 if(data.message === 'Error'){
                     throw new Error('Not found.')
                 }else{
-                    console.log(data)
                     dispatch(receiveBooks(data))
                 }
             }).catch((e)=>dispatch(receiveError(e)))

@@ -4,8 +4,21 @@ import {searchBooks} from '../actions/index'
 import store from '../store/index'
 
 class ConnectedForm extends React.Component{
+    constructor(){
+        super()
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
     componentDidMount() {
         // console.log(this.props.searchBook('Updateche'));
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+
+        let search = e.target['search'].value;
+
+        this.props.searchBook(search);
     }
 
     render() {
@@ -13,14 +26,14 @@ class ConnectedForm extends React.Component{
         console.log(searchTerm)
         return(
             <form onSubmit={this.handleSubmit}>
-                <input type={'text'} name={'search'} onChange={this.handleChange} id={'searchTerm'} placeholder={'search'}/>
+                <input type={'text'} name={'search'} id={'searchTerm'} placeholder={'search'}/>
                 <input type={'submit'} />
             </form>
         )
     }
 }
 
-const mapStateToProps = function(state){
+function mapStateToProps(state){
     return {
         books: state.books,
         isFetching: state.isFetching,

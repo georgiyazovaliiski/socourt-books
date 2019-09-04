@@ -31,7 +31,7 @@ router.route('/').post((req, res) => {
 router.route('/search').post((req,res) => {
     const nameOfSearch = req.body.name;
 
-    Book.find({name: nameOfSearch})
+    Book.find({name: { "$regex": nameOfSearch, "$options": "i" }})
         .populate('genre','name')
         .then(books => res.json(books));
 })

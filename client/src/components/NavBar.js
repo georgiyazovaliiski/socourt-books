@@ -9,10 +9,10 @@ function NavBar(){
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/books/">About</Link>
+                    <Link to="/books/">Books</Link>
                 </li>
                 <li>
-                    <Link to="/book">Users</Link>
+                    <Link to="/auth">Auth</Link>
                 </li>
             </ul>
         </nav>
