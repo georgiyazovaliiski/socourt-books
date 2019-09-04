@@ -5,8 +5,7 @@ import store from '../store/index'
 
 class ConnectedForm extends React.Component{
     componentDidMount() {
-        console.log('MAIKA MU')
-        console.log(this.props.searchBook('Updateche'));
+        // console.log(this.props.searchBook('Updateche'));
     }
 
     render() {
@@ -32,7 +31,7 @@ const mapStateToProps = function(state){
 
 function mapDispatchToProps(dispatch) {
     return {
-        searchBook: book => dispatch(searchBooks(book))
+        searchBook: searchTerm => dispatch(searchBooks(searchTerm))
     };
 }
 let Form = connect(mapStateToProps, mapDispatchToProps)(ConnectedForm);

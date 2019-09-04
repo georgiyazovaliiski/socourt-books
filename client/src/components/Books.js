@@ -5,9 +5,6 @@ import {getBooks} from "../actions/index";
 import Form from "./Form";
 
 class Books extends React.Component {
-    handleSubmit(e) {
-        e.preventDefault()
-    }
     componentDidMount() {
         this.props.dispatch(getBooks());
     }
