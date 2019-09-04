@@ -1,18 +1,22 @@
 const router = require('express').Router();
 let Book = require('../models/book.model');
 
+
 router.route('/').get((req,res) =>{
     Book.find()
+        .populate('genre','name')
         .then(books=>res.json(books))
         .catch(error => res.status(400).json('Error: ' + error))
 });
 
 router.route('/:id').get((req,res) =>{
     Book.findById(req.params.id)
+        .populate('genre','name')
         .then(books=>res.json(books))
         .catch(error => res.status(400).json('Error: ' + error))
 });
 
+// DELETE BEFORE SENDING
 router.route('/').post((req, res) => {
     const name = req.body.name;
     const author = req.body.author;
@@ -27,7 +31,9 @@ router.route('/').post((req, res) => {
 router.route('/search').post((req,res) => {
     const nameOfSearch = req.body.name;
 
-    Book.find({name: nameOfSearch}).then(books => res.json(books));
+    Book.find({name: nameOfSearch})
+        .populate('genre','name')
+        .then(books => res.json(books));
 })
 
 module.exports = router;

@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 require('dotenv').config();
+const verify = require('./routes/verifyjwt')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -24,11 +25,15 @@ connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 })
 
+
 const booksRouter = require('./routes/books');
-//const genreRouter = require('./routes/genre');
+
+const authRouter = require('./routes/auth');
+const genreRouter = require('./routes/genres');
 
 app.use('/api/books', booksRouter);
-//app.use('/genre', genreRouter);
+app.use('/api/genres',verify, genreRouter);
+app.use('/api/auth', authRouter)
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)

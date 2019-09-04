@@ -14,8 +14,9 @@ const bookSchema = new Schema({
         trim:true
     },
     genre: {
-        type:String,
-        required:true
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:'Genre'
     }},
     {
         timestamps:{createdAt: 'created_at', updatedAt: 'updated_at'}

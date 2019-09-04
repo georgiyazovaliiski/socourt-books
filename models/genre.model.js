@@ -8,7 +8,10 @@ const genreSchema = new Schema({
         required: true,
         unique:true,
         trim:true
-    }
+    },
+    books: [
+        { type: Schema.Types.ObjectId, ref:'Book' }
+    ]
 },
     {
         timestamps:true
