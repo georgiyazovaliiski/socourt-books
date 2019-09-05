@@ -129,7 +129,7 @@ router.post('/register', async (req,res) => {
 
 router.post('/login', async(req,res) => {
     const {error} = loginValidation(req.body)
-    if(!error) return res.status(400).send(error.details[0].message);
+    if(error) return res.status(400).send(error.details[0].message);
 
     const user = await User.findOne({email: req.body.email});
 
@@ -142,7 +142,7 @@ router.post('/login', async(req,res) => {
     // Create and assign token
     const token = jwt.sign({_id:user._id}, process.env.JWT_SECRET);
 
-    res.header('Bearer', token).send(token);
+    res.header('Bearer', token).json(token);
 })
 
 module.exports = router;

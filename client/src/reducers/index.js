@@ -1,4 +1,12 @@
-import {ADD_BOOK, FETCH_BOOKS, FETCH_BOOK, GET_BOOKS, RECEIVE_ERROR, GET_BOOK} from "../constants/action-types";
+import {
+    ADD_BOOK,
+    FETCH_BOOKS,
+    FETCH_BOOK,
+    GET_BOOKS,
+    RECEIVE_ERROR,
+    GET_BOOK,
+    FETCH_JWT, GET_JWT
+} from "../constants/action-types";
 import * as BookService from '../services/bookService'
 
 const initialState = {
@@ -10,7 +18,7 @@ const initialState = {
     genreFilter:'',
     selectedBook: null,
 
-    jwt:null
+    jwt:''
 };
 function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -45,6 +53,18 @@ function rootReducer(state = initialState, action) {
                 book: {},
                 isError: false
             });
+        case FETCH_JWT:
+            return Object.assign({}, state, {
+                isFetching: true,
+                jwt: '',
+                isError: false
+            });
+        case GET_JWT:{
+            return Object.assign({}, state, {
+                isFetching: false,
+                jwt: action.jwt,
+                isError: false
+            })};
         default:
             return state;
     }

@@ -31,7 +31,7 @@ const booksRouter = require('./routes/books');
 const authRouter = require('./routes/auth');
 const genreRouter = require('./routes/genres');
 
-app.use('/api/books', booksRouter);
+app.use('/api/books', verify, booksRouter);
 app.use('/api/genres',verify, genreRouter);
 app.use('/api/auth', authRouter)
 
