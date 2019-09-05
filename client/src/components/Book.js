@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 class Book extends React.Component{
 
@@ -11,8 +12,7 @@ class Book extends React.Component{
     render(){
         return (
             <div className={'book col-md-3'}>
-                <h4>{this.props.name}</h4>
-                <p>{this.props.genre}</p>
+                <Link to={`/book/`+this.props.dataKey}><h4>{this.props.name}</h4></Link>
             </div>
         );
     };

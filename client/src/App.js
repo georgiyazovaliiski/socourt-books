@@ -14,6 +14,7 @@ import store from "./store";
 import {Provider} from "react-redux";
 
 import {get} from './services/bookService'
+import CurrBook from "./components/CurrBook";
 
 class App extends React.Component {
   render() {
@@ -27,7 +28,7 @@ class App extends React.Component {
                         <div className={'col-md-9'}>
                             <Route path="/" exact component={Books} />
                             <Route path="/books/" component={Books} />
-                            <Route path="/book/:id" component={Books} />
+                            <Route path="/book/:id" component={CurrBook} />
                         </div>
                     </div>
             </BrowserRouter>
