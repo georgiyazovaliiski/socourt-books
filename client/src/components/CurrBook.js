@@ -19,8 +19,15 @@ class CurrBook extends React.Component {
         return (
             <div className={'row'}>
                 {this.props.isFetching ? (<h1>Loading</h1>) : null}
-                {this.props.selectedBook ? (<div className={'currBook'}> <h1>{this.props.selectedBook.created_at}</h1>
-                    <Link to={'/books'}>Back...</Link> </div>) : null}
+                {this.props.selectedBook ? (
+                    <div className={'book'}>
+                        <h4>Name: {this.props.selectedBook.name}</h4>
+                        <h6>Author: {this.props.selectedBook.author}</h6>
+                        <h6>Genre: {this.props.selectedBook.genre.name}</h6>
+                        <h6>Created on: {this.props.selectedBook.created_at}</h6>
+                        <h6>Last updated on: {this.props.selectedBook.updated_at}</h6>
+                        <Link to={'/books'}>Back...</Link>
+                    </div>) : null}
             </div>
         );
     }

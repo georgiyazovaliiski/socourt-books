@@ -8,7 +8,9 @@ const initialState = {
     error: '',
     searchTerm:'',
     genreFilter:'',
-    selectedBook: null
+    selectedBook: null,
+
+    jwt:null
 };
 function rootReducer(state = initialState, action) {
     switch (action.type) {

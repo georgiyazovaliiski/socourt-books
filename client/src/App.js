@@ -15,6 +15,7 @@ import {Provider} from "react-redux";
 
 import {get} from './services/bookService'
 import CurrBook from "./components/CurrBook";
+import LoginForm from "./components/user/LoginForm";
 
 class App extends React.Component {
   render() {
@@ -29,6 +30,7 @@ class App extends React.Component {
                             <Route path="/" exact component={Books} />
                             <Route path="/books/" component={Books} />
                             <Route path="/book/:id" component={CurrBook} />
+                            <Route path="/auth" exact component={LoginForm}/>
                         </div>
                     </div>
             </BrowserRouter>
